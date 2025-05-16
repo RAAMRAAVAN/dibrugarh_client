@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { usePathname} from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {
   AppBar, Box, Toolbar, IconButton, Typography, Button, Drawer,
   List, ListItem, ListItemText, Menu, MenuItem, Avatar,
@@ -9,15 +9,16 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
-import { ExpandMore} from "@mui/icons-material";
+import { ExpandMore } from "@mui/icons-material";
 import { HName } from "../Global";
 import { motion } from "framer-motion";
 import ContactUsDropdown from './ContactUsDropdown';
 import FacilitiesDropdown from './FacilitiesDropDown';
 import { HomePageAccess, AboutUsAccess, FacilitiesAccess, HospitalsAccess, NewsAndEventsAccess, ContactUsAccess, SocialInfraAccess, AcademicsAccess } from "@/lib/fetchData";
 import { useSelector } from "react-redux";
-import {NavBackground, NavElements} from '../Global';
+import { NavBackground, NavElements } from '../Global';
 import { selectDoctors } from "@/redux/features/doctorSlice";
+import MobileView from './MobileView';
 const navItems = [
   { name: "Home", link: "/", Active: HomePageAccess },
   { name: "About Us", link: "/about_us", Active: AboutUsAccess },
@@ -54,8 +55,8 @@ export default function Navbar({ Title, OurHospitals, Facilities }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <AppBar elevation={0} position="static" style={{ zIndex: 10, backgroundColor: NavBackground , color:'black'}}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: 'relative', zIndex: 6 }} boxShadow={0}>
+      <AppBar elevation={0} position="static" style={{ zIndex: 10, backgroundColor: NavBackground, color: 'black' }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: 'relative', zIndex: 6, minHeight: '52px !important', }} boxShadow={0}>
           <Box sx={{ display: { xs: "none", md: "none" }, mr: 1 }}>
             <ExportedImage src="/vercel.gif" alt="logo" width={50} height={50} />
           </Box>
@@ -110,7 +111,7 @@ export default function Navbar({ Title, OurHospitals, Facilities }) {
                         );
                       case "Facilities":
                         return (
-                        // <FacilitiesDropdown item={item} Facilities={Facilities}/>
+                          // <FacilitiesDropdown item={item} Facilities={Facilities}/>
                           <Box key={item.name}>
                             <Button
                               sx={{ color: NavElements }}
@@ -178,22 +179,8 @@ export default function Navbar({ Title, OurHospitals, Facilities }) {
           </IconButton>
         </Toolbar>
 
-        <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
-          <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerToggle} onKeyDown={handleDrawerToggle}>
-            <List>
-              {navItems.map((item) => {
-                if (item.Active) return (
+        <MobileView mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} OurHospitals={OurHospitals} />
 
-                  <Link key={item.name} href={item.link} passHref legacyBehavior>
-                    <ListItem component="div">
-                      <ListItemText primary={item.name} />
-                    </ListItem>
-                  </Link>
-                )
-              })}
-            </List>
-          </Box>
-        </Drawer> 
       </AppBar>
     </motion.div>
   );
