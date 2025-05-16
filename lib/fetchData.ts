@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 
-export const HospitalName = 'DIBRIGARH CANCER CENTRE';
+export const HospitalName = 'DIBRUGARH CANCER CENTRE';
 export const HName = '/Dibrugarh';
 export const HomePageAccess = true;
 export const AboutUsAccess = true;
