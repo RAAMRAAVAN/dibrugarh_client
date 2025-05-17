@@ -75,7 +75,7 @@ export default function Navbar({ Title, OurHospitals, Facilities }) {
                         return (
                           <Box key={item.name}>
                             <Button
-                              sx={{ color: NavElements }}
+                              sx={{ color: NavElements, fontWeight: Bold ? 'bold' : 'none' }}
                               onClick={handleHospitalsClick}
                               aria-controls={anchorEl ? "hospitals-menu" : undefined}
                               aria-haspopup="true"
@@ -114,7 +114,7 @@ export default function Navbar({ Title, OurHospitals, Facilities }) {
                           // <FacilitiesDropdown item={item} Facilities={Facilities}/>
                           <Box key={item.name}>
                             <Button
-                              sx={{ color: NavElements }}
+                              sx={{ color: NavElements, fontWeight: Bold ? 'bold' : 'none' }}
                               onClick={handleFacilitiesClick}
                               aria-controls={anchorE2 ? "facilities-menu" : undefined}
                               aria-haspopup="true"
@@ -152,7 +152,7 @@ export default function Navbar({ Title, OurHospitals, Facilities }) {
                       default:
                         return (
                           <Link key={item.name} href={item.link} passHref legacyBehavior>
-                            <Button sx={{ color: NavElements }}>{item.name}</Button>
+                            <Button sx={{ color: NavElements, fontWeight: Bold ? 'bold' : 'none' }}>{item.name}</Button>
                           </Link>
                         );
                     }

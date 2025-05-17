@@ -15,7 +15,7 @@ const ContactUsDropdown = () => {
       sx={{ display: "inline-block", position: 'relative', zIndex:'10001' }}
     >
       <Button
-        sx={{ color: NavElements }}
+        sx={{ color: NavElements, fontWeight: Bold ? 'bold' : 'none' }}
         onMouseEnter={() => setOpen(true)} // Change onHover to onMouseEnter
         onMouseLeave={() => setOpen(false)} // Optionally, close on mouse leave
       >
